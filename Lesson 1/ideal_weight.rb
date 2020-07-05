@@ -15,7 +15,7 @@ input_height = gets.to_i
 result = (input_height - 110) * 1.15
 
 if result > 0
-  puts "#{input_name}, ваш идеальный вес #{result}"
+  puts "#{input_name}, ваш идеальный вес #{result.to_i}"
 else
   puts "#{input_name}, ваш вес уже оптимальный"
 end
