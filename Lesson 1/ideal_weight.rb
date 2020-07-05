@@ -12,8 +12,7 @@ input_name = gets.chomp
 puts "Введите ваш рост"
 input_height = gets.to_i
 
-result = (input_height - 110) * 1.15
-result.to_i!
+result = (input_height - 110) * 1.15.to_i
 
 if result > 0
   puts "#{input_name}, ваш идеальный вес #{result}"
