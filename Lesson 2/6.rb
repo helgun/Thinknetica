@@ -9,7 +9,7 @@
 Вычислить и вывести на экран итоговую сумму всех покупок в "корзине".
 =end
 
-cart = {}
+cart = Hash.new("nothin here")
 sum = 0
 
 loop do
