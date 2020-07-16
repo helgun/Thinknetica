@@ -1,12 +1,12 @@
 class Station
-  @@trains = Hash.new("Такого поезда нет")
 
   def initialize(name)
     @name = name
+    @trains = []
   end
 
-  def get_train(train_name, type)
-    @@trains[train_name] = type
+  def get_train(train)
+    @trains = train
   end
 
   def show_trains
