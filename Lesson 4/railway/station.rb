@@ -10,12 +10,12 @@ class Station
   end
 
   def show_trains
-    @@trains.each { |train_name, type| puts "#{train_name} - #{type}" }
+    @trains
   end
 
-  def send_train(train_name)
-    puts "Поезд #{train_name} отправлен" if @@trains.include?(train_name)
-    @@trains.delete(train_name)
+  def send_train(train)
+    puts "Поезд #{train} отправлен"
+    @trains.delete(train)
   end
 end
 
