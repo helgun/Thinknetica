@@ -3,11 +3,14 @@ require_relative 'route'
 require_relative 'station'
 
 
-train = Train.new("123", "cargo", 3)
+train = Train.new("111", "грузовой", 3)
+train2 = Train.new("222", "пассажир", 3)
+train3 = Train.new("333", "грузовой", 2)
 route = Route.new("a_station", "c_station")
 station = Station.new(train)
 
-route.display_routes
+
 station.get_train(train)
+station.get_train(train2)
+station.get_train(train3)
 station.show_trains
-station.send_train(train)

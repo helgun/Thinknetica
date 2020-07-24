@@ -10,7 +10,7 @@ class Station
   end
 
   def show_trains
-    @trains.each { |train| puts train.number }
+    @trains.group_by(&:type).transform_values(&:count).each { |k, v| puts "#{k} - #{v} "}
   end
 
   def send_train(train_name)

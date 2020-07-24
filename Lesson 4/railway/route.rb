@@ -1,21 +1,20 @@
 class Route
-  
   def initialize(start_station, end_station)
     @start_station = start_station
     @end_station = end_station
-    @routes = [start_station, end_station]
+    @stations = [start_station, end_station]
   end
 
   def add_station(station)
-    @routes.insert(1, station)
+    @stations.insert(1, station)
   end
 
   def delete_station(station)
     #Check if station exist
-    if @routes.include?(station)
+    if @stations.include?(station)
       #Check if user tries to delete first or last station
-      if @routes.first != station && @routes.last != station
-        @routes.delete(station)
+      if @stations.first != station && @stations.last != station
+        @stations.delete(station)
       else 
         puts "You cannot delete starting/ending station"
       end
@@ -23,7 +22,7 @@ class Route
       puts "Station not found"
     end
   end
-    def display_routes
-      @routes.map { |station| puts station }
+    def display_stations
+      @stations.map { |station| puts station }
     end
 end
