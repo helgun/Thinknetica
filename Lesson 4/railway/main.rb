@@ -9,8 +9,7 @@ train3 = Train.new("333", "грузовой", 2)
 route = Route.new("a_station", "c_station")
 station = Station.new(train)
 
-
-station.get_train(train)
-station.get_train(train2)
-station.get_train(train3)
-station.show_trains
+train.set_route(route)
+train.next_station
+train.prev_station
+train.prev_station
