@@ -39,17 +39,21 @@ class Train
   end
 
   def set_route(route)
-    @route = route.stations
-    @current_station = @route[0]
-   puts "Начальная станция #{@current_station}"
+    @route = route
+    @current_station = @route.stations.first
+    @current_station.get_train(self)
   end
+
+  def current_station
+    puts "Текущая станция:#{@current_station.name}"
+  end  
 
   def next_station
     #Checking if no next station
-    if (@route.size - 1) != @route.index(@current_station)
-      next_station = @route.index(@current_station) + 1
-      @current_station = @route[next_station]
-     puts "Едем на след. станция: #{@current_station}"
+    if @current_station != @route.stations.last
+      next_station = @route.stations.index(@current_station) + 1
+      @current_station = @route.stations[next_station]
+     puts "Едем на след. станция: #{@current_station.name}"
     else
      puts "Это была конечная станция"
     end
@@ -57,10 +61,10 @@ class Train
 
   def prev_station
     #Checking if no prev station
-    if 0 != @route.index(@current_station)
-      next_station = @route.index(@current_station) - 1
-      @current_station = @route[next_station]
-     puts "Едем на пред. станцию: #{@current_station}"
+    if 0 != @route.stations.index(@current_station)
+      next_station = @route.stations.index(@current_station) - 1
+      @current_station = @route.stations[next_station]
+     puts "Едем на пред. станцию: #{@current_station.name}"
     else
      puts "Вы дошли до начальной станции"
     end
