@@ -12,6 +12,3 @@ c_station = Station.new("c_station")
 route = Route.new(a_station, c_station)
 train.set_route(route)
 train.next_station
-train.current_station
-train.prev_station
-train.current_station

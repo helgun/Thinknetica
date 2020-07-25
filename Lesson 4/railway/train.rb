@@ -48,25 +48,35 @@ class Train
     puts "Текущая станция:#{@current_station.name}"
   end  
 
-  def next_station
-    #Checking if no next station
+  def forward
     if @current_station != @route.stations.last
       next_station = @route.stations.index(@current_station) + 1
       @current_station = @route.stations[next_station]
-     puts "Едем на след. станция: #{@current_station.name}"
+      @current_station.send_train(self)
+      @current_station
     else
-     puts "Это была конечная станция"
+      nil
     end
   end
 
-  def prev_station
+  def backward
     #Checking if no prev station
     if 0 != @route.stations.index(@current_station)
-      next_station = @route.stations.index(@current_station) - 1
-      @current_station = @route.stations[next_station]
-     puts "Едем на пред. станцию: #{@current_station.name}"
+      prev_station = @route.stations.index(@current_station) - 1
+      @current_station = @route.stations[prev_station]
+      @current_station.send_train(self)
+      @current_station.name
     else
-     puts "Вы дошли до начальной станции"
+      nil
     end
   end
+
+  def next_station
+    forward
+  end
+
+  def prev_station
+    backward
+  end
+
 end
