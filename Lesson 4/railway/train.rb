@@ -29,12 +29,12 @@ class Train
   end
 
   def increase_wagons
-    @@wagons_qty += 1 if @speed == 0
+    @wagons_qty += 1 if @speed == 0
   end
 
   def decrease_wagons
     if @wagons_qty > 0
-      @@wagons_qty -= 1 if @speed == 0
+      @wagons_qty -= 1 if @speed == 0
     end
   end
 
@@ -65,13 +65,17 @@ class Train
   end
 
   def next_station
-    next_station = @route.stations.index(@current_station) + 1
-    @route.stations[next_station]
+    @current_station != @route.stations.last
+      next_station = @route.stations.index(@current_station) + 1
+      @route.stations[next_station]
+    end
   end
 
   def prev_station
-    next_station = @route.stations.index(@current_station) - 1
-    @route.stations[next_station]
+    if 0 != @route.stations.index(@current_station)
+      next_station = @route.stations.index(@current_station) - 1
+      @route.stations[next_station]
+    end
   end
 
 end
