@@ -33,9 +33,7 @@ class Train
   end
 
   def decrease_wagons
-    if @wagons_qty > 0
-      @wagons_qty -= 1 if @speed == 0
-    end
+    wagons_qty -= 1 if @speed.zero? && @wagons_qty > 0
   end
 
   def set_route(route)
