@@ -50,7 +50,7 @@ class Train
 
   def current_station
     puts "Текущая станция:#{@current_station.name}"
-  end  
+  end
 
   def forward
     if next_station
@@ -69,15 +69,10 @@ class Train
   end
 
   def next_station
-    @current_station != @route.stations.last
-      @route.stations[current_station_index + 1]
-    end
+    @route.stations[current_station_index + 1]
   end
 
   def prev_station
-    if 0 != @route.stations.index(@current_station)
-      @route.stations[current_station_index - 1]
-    end
+    @route.stations[current_station_index - 1] unless current_station_index.zero?
   end
-
 end
