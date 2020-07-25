@@ -44,6 +44,10 @@ class Train
     @current_station.get_train(self)
   end
 
+  def current_station_index
+    @route.stations.index(@current_station)
+  end
+
   def current_station
     puts "Текущая станция:#{@current_station.name}"
   end  
@@ -66,15 +70,13 @@ class Train
 
   def next_station
     @current_station != @route.stations.last
-      next_station = @route.stations.index(@current_station) + 1
-      @route.stations[next_station]
+      @route.stations[current_station_index + 1]
     end
   end
 
   def prev_station
     if 0 != @route.stations.index(@current_station)
-      next_station = @route.stations.index(@current_station) - 1
-      @route.stations[next_station]
+      @route.stations[current_station_index - 1]
     end
   end
 
