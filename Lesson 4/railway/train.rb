@@ -49,34 +49,29 @@ class Train
   end  
 
   def forward
-    if @current_station != @route.stations.last
-      next_station = @route.stations.index(@current_station) + 1
-      @current_station = @route.stations[next_station]
+    if next_station
       @current_station.send_train(self)
-      @current_station
-    else
-      nil
+      @current_station = next_station
+      @current_station.get_train(self)
     end
   end
 
   def backward
-    #Checking if no prev station
-    if 0 != @route.stations.index(@current_station)
-      prev_station = @route.stations.index(@current_station) - 1
-      @current_station = @route.stations[prev_station]
+    if prev_station
       @current_station.send_train(self)
-      @current_station.name
-    else
-      nil
+      @current_station = prev_station
+      @current_station.get_train(self)
     end
   end
 
   def next_station
-    forward
+    next_station = @route.stations.index(@current_station) + 1
+    @route.stations[next_station]
   end
 
   def prev_station
-    backward
+    next_station = @route.stations.index(@current_station) - 1
+    @route.stations[next_station]
   end
 
 end
