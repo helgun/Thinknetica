@@ -1,11 +1,11 @@
 class Train
-  attr_reader :wagons_qty, :number, :type, :current_station
+  attr_reader :wagons, :number, :type, :current_station, :train_types
 
-  def initialize(number, type, wagons_qty)
+  def initialize(number, type)
     @number = number
     @type = type
-    @wagons_qty = wagons_qty
     @speed = 0
+    @wagons = []
   end
 
   #Может набирать скорость
@@ -28,12 +28,12 @@ class Train
     end
   end
 
-  def increase_wagons
-    @wagons_qty += 1 if @speed == 0
+  def increase_wagons(wagon)
+    @wagons << wagon if @speed == 0 && wagon.type == @type
   end
 
   def decrease_wagons
-    @wagons_qty -= 1 if @speed.zero? && @wagons_qty > 0
+    @wagons -= wagon if @speed.zero? && @wagons_qty > 0
   end
 
   def set_route(route)
@@ -50,6 +50,16 @@ class Train
     puts "Текущая станция:#{@current_station.name}"
   end
 
+  def next_station
+    @route.stations[current_station_index + 1]
+  end
+
+  def prev_station
+    @route.stations[current_station_index - 1] unless current_station_index.zero?
+  end
+
+  protected
+  
   def forward
     if next_station
       @current_station.send_train(self)
@@ -66,11 +76,4 @@ class Train
     end
   end
 
-  def next_station
-    @route.stations[current_station_index + 1]
-  end
-
-  def prev_station
-    @route.stations[current_station_index - 1] unless current_station_index.zero?
-  end
 end

@@ -24,6 +24,7 @@ class Route
       puts "Station not found"
     end
   end
+  
     def display_stations
       @stations.map { |station| puts station }
     end

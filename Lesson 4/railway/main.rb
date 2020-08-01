@@ -1,8 +1,12 @@
 require_relative 'train'
 require_relative 'route'
 require_relative 'station'
+require_relative 'cargo_train'
 
-train = Train.new("111", "грузовой", 3)
+cargo_train = CargoTrain.new("111", 2)
+puts cargo_train
+
+train = Train.new("111", "passenger", 3)
 train2 = Train.new("222", "пассажир", 3)
 train3 = Train.new("333", "грузовой", 2)
 
