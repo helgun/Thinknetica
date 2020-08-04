@@ -19,7 +19,7 @@ require_relative 'cargo_train'
 
 @stations = []
 @trains = []
-@route = []
+@routes = []
 
 def create_station
   puts "Enter the name of the station: "
@@ -55,26 +55,13 @@ def routes
   user_input = gets.to_i
 
   if user_input == 1
-    @route.each { |route| puts route }
+    @routes.each { |route| puts route.name }
   elsif user_input == 2
-    @stations.each { |station| puts "Station: #{station.name}"}
-    puts "Choose stations to create route"
-    user_station_input = ""
-
-    while user_station_input != "create"
-      route = []
-      user_station_input = gets.chomp
-      stations = @stations.map { |station| station.name }
-      if stations.include?(user_station_input)
-        puts "Added"
-        route << user_station_input
-        route.delete("create")
-        @route << route
-      else
-        puts "Station not found"
-        puts @route.to_s
-      end
-    end
+    puts 'Выберете станцию отправления и назначения из списка и введите через запятую'
+      @stations.each.with_index(1) { |val, index| puts "#{index} - #{val.name}" }
+      first, second = gets.split(',').map(&:to_i)
+      route = Route.new(@stations[first - 1], @stations[second - 1])
+      @routes.push(route)
   elsif user_input == 3
     #Delete route
   end
