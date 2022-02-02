@@ -18,6 +18,6 @@ hash = {
   "December" => 31
 }
 
-hash.each do |k, v|
-  puts k if v == 30
+hash.each do |month, days|
+  puts month if days == 30
 end
