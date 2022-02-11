@@ -5,3 +5,5 @@ class PassengerWagon
     @type = type
   end
 end
+
+
