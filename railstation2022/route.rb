@@ -1,25 +1,29 @@
 class Route
-  attr_reader :first_station, :last_station, :routes
+  attr_reader :first_station, :last_station, :way_stations
   #Имеет начальную и конечную станцию, а также список промежуточных станций.
   #Начальная и конечная станции указываютсся при создании маршрута, а промежуточные могут добавляться между ними.
   def initialize(first_station, last_station)
-    @routes = [first_station, last_station]
-    @first_station = @routes.first
-    @last_station = @routes.last
+    @way_stations = [first_station, last_station]
+    @first_station = @way_stations.first
+    @last_station = @way_stations.last
   end
 
   #Может добавлять промежуточную станцию в список
   def add_station(station)
-    @routes.push(station)
+    @way_stations.push(station)
   end
 
   #Может удалять промежуточную станцию из списка
   def del_station(station)
-    @routes.pop(station)
+    @way_stations.pop(station)
   end
 
   #Может выводить список всех станций по-порядку от начальной до конечной
   def show_stations
-    @routes.each { |station| puts station.name }
+    stations_array = []
+    @way_stations.each { |station| stations_array << station }
+    return stations_array
   end
 end
+
+
