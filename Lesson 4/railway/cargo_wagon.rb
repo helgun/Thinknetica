@@ -5,3 +5,5 @@ class CargoWagon
     @type = type
   end
 end
+
+
