@@ -4,8 +4,16 @@ class Route
   #Начальная и конечная станции указываютсся при создании маршрута, а промежуточные могут добавляться между ними.
   def initialize(first_station, last_station)
     @way_stations = [first_station, last_station]
-    @first_station = @way_stations.first
-    @last_station = @way_stations.last
+    @first_station = first_station
+    @last_station = last_station
+  end
+
+  def first_station
+    @way_stations.first
+  end
+
+  def last_station
+    @way_stations.last
   end
 
   #Может добавлять промежуточную станцию в список
@@ -17,13 +25,4 @@ class Route
   def del_station(station)
     @way_stations.pop(station)
   end
-
-  #Может выводить список всех станций по-порядку от начальной до конечной
-  def show_stations
-    stations_array = []
-    @way_stations.each { |station| stations_array << station }
-    return stations_array
-  end
 end
-
-

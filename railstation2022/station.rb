@@ -22,7 +22,4 @@ class Station
   def send_train(train)
     @parking.pop(train)
   end
-  
 end
-
-
